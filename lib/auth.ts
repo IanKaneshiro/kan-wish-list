@@ -80,9 +80,17 @@ export const authConfig: NextAuthConfig = {
             session.user.id = dbUser._id.toString();
             session.user.groups = dbUser.groups.map((g) => g.toString());
             session.user.wishlistId = dbUser.wishlist?.toString();
-            console.log("Session created for user:", dbUser.email, "wishlistId:", session.user.wishlistId);
+            console.log(
+              "Session created for user:",
+              dbUser.email,
+              "wishlistId:",
+              session.user.wishlistId
+            );
           } else {
-            console.error("User not found in session callback for email:", session.user?.email);
+            console.error(
+              "User not found in session callback for email:",
+              session.user?.email
+            );
           }
         } catch (error) {
           console.error("Error in session callback:", error);

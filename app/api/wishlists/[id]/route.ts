@@ -31,7 +31,7 @@ export async function GET(
 
     // Check if user has access to this wishlist
     const isOwner = wishlist.ownerId._id.toString() === session.user.id;
-    
+
     // If not the owner, check if user is a member of the group
     if (!isOwner) {
       if (!wishlist.groupId) {

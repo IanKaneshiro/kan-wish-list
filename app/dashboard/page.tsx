@@ -79,7 +79,8 @@ export default function DashboardPage() {
               No Wishlist Found
             </h2>
             <p className="text-yellow-700">
-              It looks like your account doesn't have a wishlist yet. Try signing out and signing back in to create one.
+              It looks like your account doesn't have a wishlist yet. Try
+              signing out and signing back in to create one.
             </p>
           </div>
         </div>
