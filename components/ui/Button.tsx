@@ -18,13 +18,13 @@ export function Button({
 
   const variants = {
     primary:
-      "bg-red-600 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-300",
+      "bg-red-600 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:bg-red-700 dark:hover:bg-red-800 dark:focus:ring-red-900",
     secondary:
-      "bg-green-600 text-white hover:bg-green-700 focus:ring-4 focus:ring-green-300",
+      "bg-green-600 text-white hover:bg-green-700 focus:ring-4 focus:ring-green-300 dark:bg-green-700 dark:hover:bg-green-800 dark:focus:ring-green-900",
     outline:
-      "border-2 border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-gray-200",
+      "border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700",
     danger:
-      "bg-red-600 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-300",
+      "bg-red-600 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:bg-red-700 dark:hover:bg-red-800 dark:focus:ring-red-900",
   };
 
   const sizes = {

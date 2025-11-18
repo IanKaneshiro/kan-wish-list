@@ -1,37 +1,20 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
-import {
-  Snowflakes,
-  TwinklingLights,
-} from "@/components/animations/ChristmasAnimations";
+import { useMemo } from "react";
 import { Navigation } from "./Navigation";
 
 export function ChristmasLayout({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession();
-  const [reduceMotion, setReduceMotion] = useState(false);
 
-  useEffect(() => {
-    // Fetch user settings if logged in
-    if (session?.user) {
-      fetch("/api/settings")
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.settings) {
-            setReduceMotion(data.settings.reduceMotion);
-          }
-        })
-        .catch(console.error);
-    }
-  }, [session]);
+  // Memoize navigation to prevent re-renders
+  const navigation = useMemo(() => {
+    return session ? <Navigation /> : null;
+  }, [session?.user?.id]); // Only re-render when user ID changes
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-red-50 via-white to-green-50">
-      <Snowflakes disabled={reduceMotion} />
-      <TwinklingLights disabled={reduceMotion} />
-
-      {session && <Navigation />}
+    <div className="min-h-screen bg-linear-to-b from-red-50 via-white to-green-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+      {navigation}
 
       <main className="relative z-10">{children}</main>
     </div>

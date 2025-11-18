@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import connectDB from "@/lib/db";
 import { User } from "@/lib/models/User";
+import { Theme } from "@/lib/constants/theme";
 
 // GET /api/settings - Get user settings
 export async function GET() {
@@ -39,8 +40,16 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { emailNotifications, reduceMotion, paymentInfo } =
+    const { emailNotifications, reduceMotion, theme, paymentInfo } =
       await request.json();
+
+    // Validate theme if provided
+    if (theme !== undefined && !["light", "dark", "system"].includes(theme)) {
+      return NextResponse.json(
+        { error: "Invalid theme value" },
+        { status: 400 }
+      );
+    }
 
     await connectDB();
 
@@ -55,6 +64,9 @@ export async function PUT(request: NextRequest) {
     }
     if (reduceMotion !== undefined) {
       user.settings.reduceMotion = reduceMotion;
+    }
+    if (theme !== undefined) {
+      user.settings.theme = theme;
     }
 
     // Update payment info

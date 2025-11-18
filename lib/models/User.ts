@@ -1,4 +1,5 @@
 import mongoose, { Schema, Model, Document } from "mongoose";
+import { Theme, DEFAULT_THEME } from "../constants/theme";
 
 // Notification interface
 export interface INotification {
@@ -25,6 +26,7 @@ export interface IUser extends Document {
   settings: {
     emailNotifications: boolean;
     reduceMotion: boolean;
+    theme: Theme;
   };
   paymentInfo?: {
     venmo?: string;
@@ -63,6 +65,11 @@ const UserSchema = new Schema<IUser>(
     settings: {
       emailNotifications: { type: Boolean, default: false },
       reduceMotion: { type: Boolean, default: false },
+      theme: {
+        type: String,
+        enum: ["light", "dark", "system"],
+        default: DEFAULT_THEME,
+      },
     },
     paymentInfo: {
       venmo: { type: String },

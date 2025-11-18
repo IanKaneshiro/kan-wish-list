@@ -71,8 +71,8 @@ export function WishlistItems({
 
   if (!items || items.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow p-8 text-center">
-        <p className="text-gray-500 text-lg">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-8 text-center">
+        <p className="text-gray-500 dark:text-gray-400 text-lg">
           {isOwner
             ? "Your wishlist is empty. Add some items to get started!"
             : "This wishlist is empty."}

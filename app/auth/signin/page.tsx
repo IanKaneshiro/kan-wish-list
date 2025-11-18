@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/Button";
 
 export default function SignInPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-red-50 to-green-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-xl">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-b from-red-50 to-green-50 dark:from-gray-900 dark:to-gray-900 p-4">
+      <div className="max-w-md w-full space-y-6 sm:space-y-8 p-6 sm:p-8 bg-white dark:bg-gray-800 rounded-lg shadow-xl">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-red-600 mb-2">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-600 dark:text-red-500 mb-2">
             🎄 Christmas Wishlist
           </h1>
-          <p className="text-gray-600">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
             Share the joy of giving with your loved ones
           </p>
         </div>
@@ -19,7 +19,7 @@ export default function SignInPage() {
         <div className="space-y-4">
           <Button
             onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
-            className="w-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 flex items-center justify-center gap-3 py-3"
+            className="w-full bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-100 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 flex items-center justify-center gap-3 py-3"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
@@ -43,7 +43,7 @@ export default function SignInPage() {
           </Button>
         </div>
 
-        <p className="text-xs text-center text-gray-500 mt-4">
+        <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">
           By signing in, you agree to our Terms of Service and Privacy Policy
         </p>
       </div>
